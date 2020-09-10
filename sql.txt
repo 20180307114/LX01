@@ -1,0 +1,58 @@
+DROP DATABASE IF EXISTS Works;
+CREATE DATABASE Works DEFAULT CHARSET=GBK;
+USE Works;
+CREATE TABLE UserInfo
+(
+UserName nvarchar(50) Primary key,
+Password nvarchar(50) not null,
+QQ nvarchar(12),
+Email nvarchar(50),
+Type nchar(10) not null,
+UserImg nvarchar(250)
+) ;
+USE WORK
+CREATE TABLE Acitvity
+(
+ActivityID int Primary key auto_increment,
+ActivityVerify nchar(10) not null DEFAULT '待审核'
+EndTime  nvarchar(50),
+ActivityPicture  nvarchar(50),
+ActivityIntroduction  nvarchar(50),
+Summary  nvarchar(50),
+ActivityVerify  nvarchar(50),
+ActivityStatus  nvarchar(50),
+UserName navchar(50)
+);
+CREATE TABLE WorkInfo
+(
+WordID int Primary key ,
+WorkName nchar(10),
+WorkPicture  nvarchar(50),
+UploadTime  nvarchar(50),
+WordIntroduction  nvarchar(50),
+WordVerify  nvarchar(50),
+UserName  nvarchar(50),
+ActivityName  nvarchar(50),
+Recommend navchar(50),
+RecommendTime navchar(50)
+);
+CREATE TABLE Comment
+(
+CommentID int Primary key,
+WordID nchar(10),
+WorkName  nvarchar(50),
+UserName  nvarchar(50),
+Commend navchar(50),
+CommendTime navchar(50)
+);
+CREATE TABLE Image
+(
+UserName int Primary key,
+PassWord nchar(10),
+QQ  nvarchar(50),
+Email  nvarchar(50),
+Type navchar(50),
+UserImg navchar(50)
+);
+ALTER TABLE WorkInfo
+ADD FOREIGN KEY(UserName) REFERENCES UserInfo(UserName);
